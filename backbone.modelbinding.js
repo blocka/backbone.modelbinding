@@ -133,6 +133,7 @@ Backbone.ModelBinding.StandardBinding = (function(){
       var attribute_name = Backbone.ModelBinding.Configuration.getBindingValue(element, methods._getElementType(element));
       // unbind the model changes to the form elements
       model.unbind("change:" + attribute_name, methods._modelChange);
+	view.$(this).unbind('change');
     });
   };
 
