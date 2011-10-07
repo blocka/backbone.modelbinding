@@ -240,7 +240,7 @@ Backbone.ModelBinding.RadioGroupBinding = (function(Backbone){
 
   methods._modelChange = function(model, val){
     var value_selector = "input[type=radio][" + this.bindingAttr + "=" + this.group_name + "][value=" + val + "]";
-    this.view.$(value_selector).attr("checked", "checked");
+    this.view.$(value_selector).prop("checked", true);
   };
 
   methods.unbind = function(selector, view, model){
@@ -289,7 +289,7 @@ Backbone.ModelBinding.RadioGroupBinding = (function(Backbone){
         var attr_value = model.get(group_name);
         if (typeof attr_value !== "undefined" && attr_value !== null) {
           var value_selector = "input[type=radio][" + bindingAttr + "=" + group_name + "][value=" + attr_value + "]";
-          view.$(value_selector).attr("checked", "checked");
+          view.$(value_selector).prop("checked", true);
         }
       }
     });
@@ -306,10 +306,10 @@ Backbone.ModelBinding.CheckboxBinding = (function(Backbone){
 
   methods._modelChange = function(model, val){
     if (val){
-      this.element.attr("checked", "checked");
+      this.element.prop("checked", true);
     }
     else{
-      this.element.removeAttr("checked");
+      this.element.prop("checked",false);
     }
   };
 
@@ -344,10 +344,10 @@ Backbone.ModelBinding.CheckboxBinding = (function(Backbone){
       if (attr_exists) {
         var attr_value = model.get(attribute_name);
         if (typeof attr_value !== "undefined" && attr_value !== null && attr_value != false) {
-          element.attr("checked", "checked");
+          element.prop("checked", true);
         }
         else{
-          element.removeAttr("checked");
+          element.prop("checked",false);
         }
       }
     });
