@@ -299,13 +299,13 @@ someModel.set({isValid: false});
 This will disable the button when the model is invalid and enable the button when the model is
 valid.
 
-#### display
+#### displayed
 
 This allows you to specify that an element should be shown or hidden by setting the css
 of the element according to the value of the model properties specified.
 
 ````
-<div data-bind="display isValid" />
+<div data-bind="displayed isValid" />
 
 someModel.set({isValid: false});
 ````
@@ -316,7 +316,7 @@ will be set to `block`.
 
 #### hidden
 
-This is the inverse of `display`.
+This is the inverse of `displayed`.
 
 ````
 <div data-bind="hidden isValid" />
@@ -526,6 +526,22 @@ to Backbone.ModelBinding in the `backbone.modelbinding.js` file.
 
 ## Release Notes
 
+### v0.3.10
+
+* When binding to a select box and the model has a value not present in the box, reset the model's value to the box's
+* Fix for using Backbone.noConflict(), Backbone was either wrong version or undefined when it was used inside ModelBinding. 
+* Added some missing ;
+* Fix some documentation issues
+
+### v0.3.9
+
+* fixed an issue with jQuery 1.6.4 determining if check boxes are checked or not
+* minor internal clean up
+
+### v0.3.8
+
+* Fix for Internet Explorer not having a `trim` method on strings
+
 ### v0.3.7
 
 * Data-bind multiple attributes for a single element
@@ -547,7 +563,7 @@ to Backbone.ModelBinding in the `backbone.modelbinding.js` file.
 ### v0.3.3
 
 * Added data-bind attribute for setting an HTML element's `display` css
-* Added inserve of data-bind `display` as data-bind `hidden`
+* Added inserve of data-bind `displayed` as data-bind `hidden`
 * Corrected issue with binding a model's property to a checkbox, when the property is false
 
 ### v0.3.2
