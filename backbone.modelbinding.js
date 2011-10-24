@@ -160,7 +160,6 @@ Backbone.ModelBinding = (function(Backbone, _, $){
         var element = view.$(this);
         var elementType = _getElementType(element);
         var attribute_name = config.getBindingValue(element, elementType);
-	view.$(this).unbind('change');
 
         var modelChange = function(changed_model, val){ element.val(val); };
 
@@ -221,11 +220,6 @@ Backbone.ModelBinding = (function(Backbone, _, $){
             model.set(data);
           }
         }
-      else {
-      	var data = {};
-      	data[attribute_name] = element.val();
-      	model.set(data);
-      }
       });
     };
 
@@ -240,7 +234,6 @@ Backbone.ModelBinding = (function(Backbone, _, $){
 
     methods.bind = function(selector, view, model, config){
       var modelBinder = this;
-    this.view.$(value_selector).prop("checked", true);
 
       var foundElements = [];
       view.$(selector).each(function(index){
@@ -253,7 +246,7 @@ Backbone.ModelBinding = (function(Backbone, _, $){
 
           var modelChange = function(model, val){
             var value_selector = "input[type=radio][" + bindingAttr + "=" + group_name + "][value=" + val + "]";
-            view.$(value_selector).attr("checked", "checked");
+            view.$(value_selector).prop("checked", true);
           };
           modelBinder.registerModelBinding(model, group_name, modelChange);
 
@@ -277,7 +270,7 @@ Backbone.ModelBinding = (function(Backbone, _, $){
           var attr_value = model.get(group_name);
           if (typeof attr_value !== "undefined" && attr_value !== null) {
             var value_selector = "input[type=radio][" + bindingAttr + "=" + group_name + "][value=" + attr_value + "]";
-          view.$(value_selector).prop("checked", true);
+            view.$(value_selector).prop("checked", true);
           }
         }
       });
@@ -302,10 +295,10 @@ Backbone.ModelBinding = (function(Backbone, _, $){
 
         var modelChange = function(model, val){
           if (val){
-      this.element.prop("checked", true);
+            element.prop("checked", true);
           }
           else{
-      this.element.prop("checked",false);
+            element.prop("checked", false);
           }
         };
 
@@ -325,10 +318,10 @@ Backbone.ModelBinding = (function(Backbone, _, $){
         if (attr_exists) {
           var attr_value = model.get(attribute_name);
           if (typeof attr_value !== "undefined" && attr_value !== null && attr_value != false) {
-          element.prop("checked", true);
+            element.prop("checked", true);
           }
           else{
-          element.prop("checked",false);
+            element.prop("checked", false);
           }
         }
       });
